@@ -1,34 +1,28 @@
 package com.example.reciperadar
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import com.example.reciperadar.databinding.ActivityHomeBinding
+import com.example.reciperadar.databinding.ActivitySearchBinding
 
-class HomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
-    private lateinit var rvAdapter:FeaturedAdapter
+class SearchActivity : AppCompatActivity() {
+    private lateinit var binding:ActivitySearchBinding
+    private lateinit var rvAdapter:SearchAdapter
     private lateinit var dataList:ArrayList<Recipe>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.searchRecipes.requestFocus()
         setUpRecyclerView()
-
-        binding.searchView.setOnClickListener{
-            startActivity(Intent(this, SearchActivity::class.java))
-        }
     }
 
     private fun setUpRecyclerView() {
         dataList = ArrayList()
-        binding.featuredRecView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recipesSearchRecycler.layoutManager = LinearLayoutManager(this)
 
-        var db = Room.databaseBuilder(this@HomeActivity, AppDatabase::class.java, "db_name")
+        var db = Room.databaseBuilder(this@SearchActivity, AppDatabase::class.java, "db_name")
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
             .createFromAsset("recipe.db")
@@ -41,8 +35,8 @@ class HomeActivity : AppCompatActivity() {
             if (recipes[i].FEATURED == 1){
                 dataList.add(recipes[i])
             }
-            rvAdapter = FeaturedAdapter(dataList, this)
-            binding.featuredRecView.adapter = rvAdapter
+            rvAdapter = SearchAdapter(dataList, this)
+            binding.recipesSearchRecycler.adapter = rvAdapter
         }
     }
 }
