@@ -1,5 +1,6 @@
 package com.example.reciperadar
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,6 +19,12 @@ class SearchAdapter(var dataList: ArrayList<Recipe>, var context:Context):Recycl
 
     override fun getItemCount(): Int {
         return dataList.size
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun filterList(filterList: ArrayList<Recipe>) {
+        dataList = filterList
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
