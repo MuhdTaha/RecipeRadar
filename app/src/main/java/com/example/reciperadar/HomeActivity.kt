@@ -22,6 +22,28 @@ class HomeActivity : AppCompatActivity() {
         binding.searchView.setOnClickListener{
             startActivity(Intent(this, SearchActivity::class.java))
         }
+
+        var myIntent = Intent(this@HomeActivity, CategoryActivity::class.java)
+        binding.appetizerImage.setOnClickListener{
+            myIntent.putExtra("TITLE", "Appetizers")
+            myIntent.putExtra("CATEGORY", "Appetizers")
+            startActivity(myIntent)
+        }
+        binding.mainImage.setOnClickListener{
+            myIntent.putExtra("TITLE", "Main")
+            myIntent.putExtra("CATEGORY", "Main Course")
+            startActivity(myIntent)
+        }
+        binding.dessertImage.setOnClickListener{
+            myIntent.putExtra("TITLE", "Dessert")
+            myIntent.putExtra("CATEGORY", "Dessert")
+            startActivity(myIntent)
+        }
+        binding.drinksImage.setOnClickListener{
+            myIntent.putExtra("TITLE", "Drinks")
+            myIntent.putExtra("CATEGORY", "Drinks")
+            startActivity(myIntent)
+        }
     }
 
     private fun setUpRecyclerView() {
@@ -30,7 +52,7 @@ class HomeActivity : AppCompatActivity() {
 
         var db = Room.databaseBuilder(this@HomeActivity, AppDatabase::class.java, "db_name")
             .allowMainThreadQueries()
-            .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration()   
             .createFromAsset("recipe.db")
             .build()
 

@@ -3,45 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".CategoryActivity">
 
-    <EditText
-        android:id="@+id/search_recipes"
+    <TextView
+        android:id="@+id/categorySearchTitle"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/searchview"
-        android:ems="10"
-        android:focusable="auto"
+        android:paddingStart="70dp"
+        android:paddingTop="10dp"
         android:fontFamily="@font/arvo_bold"
-        android:hint="Search Recipe"
-        android:inputType="textFilter"
-        android:paddingStart="60dp"
-        android:textColorHint="#474444"
+        android:textSize="25sp"
+        android:text="Category Name"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/backButton"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/search_recipes"
-        app:layout_constraintStart_toStartOf="@+id/search_recipes"
-        app:layout_constraintTop_toTopOf="@+id/search_recipes"
-        app:srcCompat="?attr/actionModeCloseDrawable" />
+        android:id="@+id/backButton2"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:src="@drawable/icons_back"
+        app:layout_constraintBottom_toBottomOf="@+id/categorySearchTitle"
+        app:layout_constraintStart_toStartOf="@+id/categorySearchTitle"
+        app:layout_constraintTop_toTopOf="@+id/categorySearchTitle" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recipesSearchRecycler"
-        tools:listitem="@layout/search_rv"
+        android:id="@+id/categorySearchRecycler"
+        tools:listitem="@layout/category_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_recipes" />
+        app:layout_constraintTop_toBottomOf="@+id/categorySearchTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
