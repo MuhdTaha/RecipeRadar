@@ -15,6 +15,11 @@
         android:theme="@style/Theme.RecipeRadar"
         tools:targetApi="31">
         <activity
+            android:name=".RecipeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_recipe"
+            android:theme="@style/Theme.RecipeRadar" />
+        <activity
             android:name=".CategoryActivity"
             android:exported="false" />
         <activity
