@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="140dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/card_shape"
     android:layout_margin="10dp"
+    android:background="@drawable/card_shape"
+    android:backgroundTint="#F8E2E2"
     >
 
     <androidx.cardview.widget.CardView
@@ -39,7 +40,7 @@
         android:fontFamily="@font/arvo_bold"
         android:text="Crispy Chicken Tenders"
         android:textColor="@color/black"
-        android:textSize="19sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/categoryCardView"
@@ -49,16 +50,30 @@
         android:id="@+id/categoryRecipeTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="65dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/arvo_regular"
-        android:text="🕒  40 mins"
+        android:text="40 mins"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/categoryCardView"
         app:layout_constraintTop_toBottomOf="@id/categoryRecipeName" />
+
+    <ImageView
+        android:id="@+id/clockIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/categoryRecipeName"
+        android:src="@drawable/clock_icon"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/categoryRecipeTime"
+        app:layout_constraintStart_toEndOf="@+id/categoryCardView"
+        app:layout_constraintTop_toBottomOf="@id/categoryRecipeName"
+        app:layout_constraintBottom_toBottomOf="@id/categoryRecipeTime"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

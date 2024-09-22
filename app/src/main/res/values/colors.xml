@@ -4,6 +4,8 @@
     <color name="white"> #FFFFFFFF </color>
     <color name="red"> #FF3131 </color>
     <color name="light_red">#F6A9A9</color>
+    <color name="light_red2">#FBBABA</color>
+    <color name="light_red3">#FBCECE</color>
     <color name="claret"> #811331 </color>
     <color name="dark_red"> #8B0000 </color>
     <color name="purple_200"> #FFBB86FC </color>

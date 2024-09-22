@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CategoryActivity">
+    tools:context=".RecipeActivity"
+    app:layoutDescription="@xml/activity_recipe_scene">
 
     <ImageView
         android:id="@+id/recipeImage"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:background="@color/white"
         android:scaleType="centerCrop"
         android:hapticFeedbackEnabled="true"
-
         android:src="@drawable/chicken_tenders" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageShade"
         android:layout_width="0dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="@+id/recipeImage"
@@ -62,16 +62,17 @@
         android:background="@drawable/card_back_btn"
         />
 
-        <RelativeLayout
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="-10dp"
         android:background="@drawable/card_recipe"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipeImage">
+
 
         <TextView
             android:id="@+id/recipeTitle"
@@ -81,7 +82,7 @@
             android:layout_marginEnd="45dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/arvo_bold"
-            android:textSize="24sp"
+            android:textSize="25sp"
             android:textColor="@color/dark_red"
             android:text="Crispy Chicken Tenders" />
 
@@ -92,55 +93,108 @@
             android:layout_below="@id/recipeTitle"
             android:src="@drawable/clock_icon"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="9dp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/recipeTime"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:layout_toEndOf="@id/clockIcon"
             android:layout_below="@id/recipeTitle"
             android:text="25 mins"
             android:fontFamily="@font/arvo_regular"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="15sp"
             />
+        <ImageView
+            android:id="@+id/scrollUpIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="20dp"
+            android:rotation="90"
+            android:src="@drawable/back" />
 
-            <ImageView
-                android:id="@+id/scrollUpIcon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="15dp"
-                android:layout_marginTop="20dp"
-                android:rotation="90"
-                android:src="@drawable/back" />
-
-            <Button
-                android:id="@+id/ingredientsButton"
-                android:layout_width="155dp"
-                android:layout_height="50dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@id/clockIcon"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:text="Ingredients"
-                android:textSize="15sp"
-                android:fontFamily="@font/arvo_bold"/>
+        <Button
+            android:id="@+id/ingredientsButton"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/clockIcon"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:text="Ingredients"
+            android:paddingTop="6dp"
+            android:backgroundTint="@color/dark_red"
+            android:textSize="19sp"
+            android:fontFamily="@font/arvo_bold"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingredientsButton"
+            android:layout_alignParentStart="true"
+            android:padding="15dp"
+            >
+            <TextView
+                android:id="@+id/ingredientsText"
+                android:gravity="start"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"
+                android:paddingBottom="20dp"
+                android:layout_marginBottom="10dp"
+                android:lineSpacingExtra="10dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/arvo_regular"
+                android:textSize="16sp"
+                android:text="These are the ingredients you will need to make your recipe."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:visibility="gone"
+                />
+            </ScrollView>
             <Button
                 android:id="@+id/directionsButton"
-                android:layout_width="155dp"
-                android:layout_height="50dp"
+                android:layout_width="170dp"
+                android:layout_height="60dp"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@id/clockIcon"
-                android:layout_marginEnd="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="15dp"
                 android:text="Directions"
-                android:textSize="15sp"
+                android:backgroundTint="@color/light_red3"
+                android:textColor="@color/black"
+                android:textSize="19sp"
                 android:fontFamily="@font/arvo_bold"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ingredientsButton"
+                android:layout_alignParentStart="true"
+                android:padding="10dp"
+                >
+                <TextView
+                    android:id="@+id/directionsText"
+                    android:gravity="start"
+                    android:lineSpacingExtra="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingBottom="20dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/arvo_regular"
+                    android:textSize="16sp"
+                    android:text="These are the directions you will need to follow step-by-step to make your recipe."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    />
+            </ScrollView>
 
         </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

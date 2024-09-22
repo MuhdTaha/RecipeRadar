@@ -27,7 +27,7 @@ class SearchActivity : AppCompatActivity() {
         var db = Room.databaseBuilder(this@SearchActivity, AppDatabase::class.java, "db_name")
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
-            .createFromAsset("recipe.db")
+            .createFromAsset("recipes.db")
             .build()
 
         var daoObject = db.getDao()

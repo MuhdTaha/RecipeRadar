@@ -32,7 +32,7 @@ class CategoryActivity : AppCompatActivity() {
         var db = Room.databaseBuilder(this@CategoryActivity, AppDatabase::class.java, "db_name")
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()
-            .createFromAsset("recipe.db")
+            .createFromAsset("recipes.db")
             .build()
 
         var daoObject = db.getDao()

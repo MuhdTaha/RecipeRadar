@@ -1,8 +1,14 @@
 package com.example.reciperadar
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
+import android.view.ViewGroup
+import android.view.Window
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.reciperadar.databinding.ActivityHomeBinding
@@ -44,6 +50,17 @@ class HomeActivity : AppCompatActivity() {
             myIntent.putExtra("CATEGORY", "Drinks")
             startActivity(myIntent)
         }
+
+        binding.navBar.setOnClickListener{
+            var dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setContentView(R.layout.bottom_sheet)
+            dialog.show()
+            dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(getColor(R.color.white)))
+            dialog.window?.setGravity(Gravity.BOTTOM)
+        }
     }
 
     private fun setUpRecyclerView() {
@@ -53,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
         var db = Room.databaseBuilder(this@HomeActivity, AppDatabase::class.java, "db_name")
             .allowMainThreadQueries()
             .fallbackToDestructiveMigration()   
-            .createFromAsset("recipe.db")
+            .createFromAsset("recipes.db")
             .build()
 
         var daoObject = db.getDao()

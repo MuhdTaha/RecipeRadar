@@ -1,6 +1,7 @@
 package com.example.reciperadar
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,5 +31,16 @@ class FeaturedAdapter(var dataList:ArrayList<Recipe>, var context:Context):Recyc
 
         holder.binding.featuredImageTxt.text = dataList.get(position).TITLE
         holder.binding.featuredImageTime.text = "\uD83D\uDD52  " + dataList.get(position).COOKING_TIME
+        holder.itemView.setOnClickListener{
+            var intent = Intent(context, RecipeActivity::class.java)
+            intent.putExtra("IMG", dataList[position].IMG)
+            intent.putExtra("TITLE", dataList.get(position).TITLE)
+            intent.putExtra("TIME", dataList.get(position).COOKING_TIME)
+            intent.putExtra("INGREDIENTS", dataList.get(position).INGREDIENTS)
+            intent.putExtra("DIRECTIONS", dataList.get(position).DIRECTIONS)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+            context.startActivity(intent)
+        }
     }
 }
